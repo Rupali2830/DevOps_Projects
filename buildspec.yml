@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "Build started on `date`"
+      - aws s3 sync . s3://your-unique-bucket-name --delete --exclude ".git/*" --exclude "buildspec.yml"
+  post_build:
+    commands:
+      - echo "Deployment completed successfully"
